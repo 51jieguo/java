@@ -49,4 +49,19 @@ public class BinaryTree<E> {
         }
         return 0;
     }
+
+    public BinaryNode<E> search(BinaryNode<E> p,E value){
+        if(p!=null && value!=null){
+            if(p.data.equals(value)){
+                return p;
+            }else{
+                BinaryNode<E> binaryNodeTemp = null;
+                binaryNodeTemp = search(p.left,value);
+                if(binaryNodeTemp==null){
+                    return search(p.right,value);
+                }
+            }
+        }
+        return null;
+    }
 }
