@@ -51,17 +51,46 @@ public class BinaryTree<E> {
     }
 
     public BinaryNode<E> search(BinaryNode<E> p,E value){
+        BinaryNode<E> binaryNodeTemp = null;
         if(p!=null && value!=null){
             if(p.data.equals(value)){
-                return p;
+                binaryNodeTemp=p;
             }else{
-                BinaryNode<E> binaryNodeTemp = null;
                 binaryNodeTemp = search(p.left,value);
                 if(binaryNodeTemp==null){
-                    return search(p.right,value);
+                    binaryNodeTemp = search(p.right,value);
                 }
             }
         }
-        return null;
+        return binaryNodeTemp;
+    }
+
+    public BinaryNode<E> searchParentNode(BinaryNode<E> p,BinaryNode<E> searchNode){
+        BinaryNode<E> binaryNodeTemp = null;
+        if(p!=null){
+            if(p.left==searchNode || p.right==searchNode){
+                binaryNodeTemp = p;
+            }else{
+                binaryNodeTemp = searchParentNode(p.left,searchNode);
+                if(binaryNodeTemp==null){
+                    binaryNodeTemp = searchParentNode(p.right,searchNode);
+                }
+            }
+        }
+        return binaryNodeTemp;
+    }
+    private int i=0;
+    public BinaryNode<E> creatBinaryTree(E[] preOrder){
+        BinaryNode<E> p = null;
+        if(i<preOrder.length){
+            E element = preOrder[i];
+            i++;
+            if(element!=null){
+                p = new BinaryNode<E>(element);
+                p.left = creatBinaryTree(preOrder);
+                p.right = creatBinaryTree(preOrder);
+            }
+        }
+        return p;
     }
 }

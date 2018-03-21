@@ -34,5 +34,18 @@ public class BinaryTreeTest {
         System.out.print("count:"+height);
 
 
+        System.out.println("");
+        BinaryNode<String> stringBinaryNode = binaryNodeBinaryTree.search(binaryNodeA,"C");
+        System.out.println(stringBinaryNode.toString());
+
+        System.out.println("");
+        stringBinaryNode = binaryNodeBinaryTree.searchParentNode(binaryNodeA,binaryNodeG);
+        System.out.println(stringBinaryNode.toString());
+
+        String [] preOrder = {"A","B","D",null,"G",null,null,null,"C","E",null,null,"F","H"};
+        BinaryNode<String> root = binaryNodeBinaryTree.creatBinaryTree(preOrder);
+        System.out.println(root);
+        binaryNodeBinaryTree.preOrder(root);
+
     }
 }
