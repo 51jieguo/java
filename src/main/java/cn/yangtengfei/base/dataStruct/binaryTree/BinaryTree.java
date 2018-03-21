@@ -93,4 +93,22 @@ public class BinaryTree<E> {
         }
         return p;
     }
+
+    /**
+     * 二叉树插入操作
+     * @param p
+     * @param element
+     * @param isLeft
+     * @return
+     */
+    public BinaryNode<E> insertOneNode(BinaryNode<E> p,E element, boolean isLeft){
+        if(p!=null){
+            if(isLeft){
+                p.left =  new BinaryNode<E>(element,p.left,null);
+            }else{
+                p.right =  new BinaryNode<E>(element,null,p.right);
+            }
+        }
+        return p;
+    }
 }

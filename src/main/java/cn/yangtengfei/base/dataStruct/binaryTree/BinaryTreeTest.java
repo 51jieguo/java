@@ -42,9 +42,30 @@ public class BinaryTreeTest {
         stringBinaryNode = binaryNodeBinaryTree.searchParentNode(binaryNodeA,binaryNodeG);
         System.out.println(stringBinaryNode.toString());
 
-        String [] preOrder = {"A","B","D",null,"G",null,null,null,"C","E",null,null,"F","H"};
+        System.out.println("----------通过先根数组生成二叉树----------------");
+        String [] preOrder = {"A","B","D",null,"G",null,null,null,"C","E",null,null,"F",null,"H"};
         BinaryNode<String> root = binaryNodeBinaryTree.creatBinaryTree(preOrder);
-        System.out.println(root);
+        binaryNodeBinaryTree.preOrder(root);
+
+        //二叉树插入操作
+        System.out.println("");
+        System.out.println("----------二叉树插入操作----------------");
+        System.out.println("");
+        root = binaryNodeBinaryTree.insertOneNode(root,"S",true);
+
+        root = binaryNodeBinaryTree.insertOneNode(root,"T",false);
+        binaryNodeBinaryTree.preOrder(root);
+        System.out.println("");
+        binaryNodeBinaryTree.inOrder(root);
+        System.out.println("");
+        binaryNodeBinaryTree.postOrder(root);
+        System.out.println("");
+
+        //完全二叉树生成
+        System.out.println("----------完全二叉树生成----------------");
+        String [] levelOrder = {"A","B","C","D","E","F","G","H"};
+        CompleteBinaryTree<String> completeBinaryTree = new CompleteBinaryTree<>();
+        root = completeBinaryTree.create(levelOrder,0);
         binaryNodeBinaryTree.preOrder(root);
 
     }
