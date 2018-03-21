@@ -79,6 +79,10 @@ public class BinaryTree<E> {
         }
         return binaryNodeTemp;
     }
+
+    /**
+     * 通过先根数组生成二叉树
+     */
     private int i=0;
     public BinaryNode<E> creatBinaryTree(E[] preOrder){
         BinaryNode<E> p = null;
@@ -110,5 +114,20 @@ public class BinaryTree<E> {
             }
         }
         return p;
+    }
+
+    /**
+     * 删除子树
+     * @param p
+     * @param isLeft
+     */
+    public void remove(BinaryNode<E> p, boolean isLeft){
+        if(p!=null){
+            if(isLeft){
+                p.left =null;
+            }else{
+                p.right = null;
+            }
+        }
     }
 }
